@@ -24,15 +24,16 @@ function HandWrittenTitle({
     };
 
     return (
-        <div className="relative w-full max-w-4xl mx-auto py-24">
-            <div className="absolute inset-0">
+        <div className="flex flex-col items-center w-full max-w-4xl mx-auto">
+            {/* SVG + Title container */}
+            <div className="relative w-full" style={{ aspectRatio: "2 / 1" }}>
                 <motion.svg
                     width="100%"
                     height="100%"
                     viewBox="0 0 1200 600"
                     initial="hidden"
                     animate="visible"
-                    className="w-full h-full"
+                    className="absolute inset-0 w-full h-full"
                 >
                     <title>CnE</title>
                     <motion.path
@@ -50,27 +51,28 @@ function HandWrittenTitle({
                         className="text-black opacity-90"
                     />
                 </motion.svg>
-            </div>
-            <div className="relative text-center z-10 flex flex-col items-center justify-center">
-                <motion.h1
-                    className="text-7xl md:text-9xl text-black tracking-tight leading-none flex items-center gap-2"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                >
-                    {title}
-                </motion.h1>
-                {subtitle && (
-                    <motion.p
-                        className="mt-6 text-lg md:text-xl tracking-wide text-black/70"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1, duration: 0.8 }}
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.h1
+                        className="text-7xl md:text-9xl text-black tracking-tight leading-none"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
                     >
-                        {subtitle}
-                    </motion.p>
-                )}
+                        {title}
+                    </motion.h1>
+                </div>
             </div>
+            {/* Subtitle below the SVG */}
+            {subtitle && (
+                <motion.p
+                    className="mt-4 text-lg md:text-xl tracking-wide text-black/70 text-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                >
+                    {subtitle}
+                </motion.p>
+            )}
         </div>
     );
 }
