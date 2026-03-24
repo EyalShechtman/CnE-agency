@@ -1,65 +1,123 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { HandWrittenTitle } from "@/components/ui/hand-writing-text";
+
+const services = [
+  {
+    number: "01",
+    title: "Websites",
+    description: "Design & development that speaks for itself.",
+  },
+  {
+    number: "02",
+    title: "Marketing",
+    description: "Strategy that finds the right people.",
+  },
+  {
+    number: "03",
+    title: "CRMs",
+    description: "Systems that keep every relationship alive.",
+  },
+  {
+    number: "04",
+    title: "Voice Agents",
+    description: "AI that talks so you don\u2019t have to.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen bg-white text-black selection:bg-black selection:text-white">
+      {/* Nav */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-sm border-b border-black/5">
+        <Logo />
+        <a
+          href="#contact"
+          className="text-sm tracking-widest uppercase border-b border-black pb-0.5 hover:opacity-60 transition-opacity"
+        >
+          Get in touch
+        </a>
+      </nav>
+
+      {/* Hero */}
+      <section className="flex flex-col items-center justify-center min-h-screen px-8 pt-24">
+        <HandWrittenTitle
+          title={
+            <>
+              C<span className="text-[0.55em] align-baseline relative -top-[0.05em]">n</span>E
+            </>
+          }
+          subtitle="We build websites, run marketing, set up CRMs, and deploy voice agents."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+      </section>
+
+      {/* Services */}
+      <section className="px-8 py-32 max-w-4xl mx-auto">
+        <h2 className="text-sm tracking-[0.3em] uppercase text-black/40 mb-16">
+          Services
+        </h2>
+        <div className="space-y-0">
+          {services.map((service, i) => (
+            <motion.div
+              key={service.number}
+              className="flex items-baseline justify-between py-8 border-t border-black/10 group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <div className="flex items-baseline gap-8">
+                <span className="text-xs text-black/30 tracking-widest">
+                  {service.number}
+                </span>
+                <h3 className="text-2xl md:text-4xl tracking-tight group-hover:opacity-60 transition-opacity">
+                  {service.title}
+                </h3>
+              </div>
+              <p className="hidden md:block text-sm text-black/50 max-w-xs text-right">
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
+          <div className="border-t border-black/10" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+      {/* Contact */}
+      <section
+        id="contact"
+        className="px-8 py-32 max-w-4xl mx-auto text-center"
+      >
+        <h2 className="text-sm tracking-[0.3em] uppercase text-black/40 mb-8">
+          Contact
+        </h2>
+        <p className="text-3xl md:text-5xl tracking-tight leading-tight">
+          Let&rsquo;s work together.
+        </p>
+        <motion.a
+          href="mailto:hello@cne.agency"
+          className="inline-block mt-10 text-lg tracking-wide border-b border-black pb-1 hover:opacity-60 transition-opacity"
+          whileHover={{ y: -2 }}
+        >
+          hello@cne.agency
+        </motion.a>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-8 py-12 border-t border-black/10 flex items-center justify-between text-xs tracking-widest uppercase text-black/30">
+        <Logo small />
+        <span>&copy; {new Date().getFullYear()}</span>
+      </footer>
     </div>
+  );
+}
+
+function Logo({ small }: { small?: boolean }) {
+  const size = small ? "text-lg" : "text-2xl";
+  return (
+    <span className={`${size} tracking-tight`}>
+      C<span className="text-[0.55em] align-baseline relative -top-[0.05em]">n</span>E
+    </span>
   );
 }
