@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { HandWrittenTitle } from "@/components/ui/hand-writing-text";
 import { LogoCloud } from "@/components/ui/logo-cloud";
+import Link from "next/link";
 
 const services = [
   {
@@ -33,12 +34,12 @@ export default function Home() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-sm border-b border-black/5">
         <Logo />
-        <a
-          href="#contact"
+        <Link
+          href="/contact"
           className="text-sm tracking-widest uppercase border-b border-black pb-0.5 hover:opacity-60 transition-opacity"
         >
           Get in touch
-        </a>
+        </Link>
       </nav>
 
       {/* Hero */}
@@ -96,24 +97,20 @@ export default function Home() {
         <LogoCloud logos={clientLogos} />
       </section>
 
-      {/* Contact */}
-      <section
-        id="contact"
-        className="px-8 py-32 max-w-4xl mx-auto text-center"
-      >
+      {/* Contact CTA */}
+      <section className="px-8 py-32 max-w-4xl mx-auto text-center">
         <h2 className="text-sm tracking-[0.3em] uppercase text-black/40 mb-8">
           Contact
         </h2>
         <p className="text-3xl md:text-5xl tracking-tight leading-tight">
           Let&rsquo;s work together.
         </p>
-        <motion.a
-          href="mailto:hello@cne.agency"
-          className="inline-block mt-10 text-lg tracking-wide border-b border-black pb-1 hover:opacity-60 transition-opacity"
-          whileHover={{ y: -2 }}
+        <Link
+          href="/contact"
+          className="inline-block mt-10 px-8 py-4 bg-black text-white text-sm tracking-widest uppercase hover:opacity-80 transition-opacity"
         >
-          hello@cne.agency
-        </motion.a>
+          Start here
+        </Link>
       </section>
 
       {/* Footer */}
