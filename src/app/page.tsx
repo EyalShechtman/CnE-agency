@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { HandWrittenTitle } from "@/components/ui/hand-writing-text";
+import { LogoCloud } from "@/components/ui/logo-cloud";
 
 const services = [
   {
@@ -48,7 +49,7 @@ export default function Home() {
               C<span className="text-[0.55em] align-baseline relative -top-[0.05em]">n</span>E
             </>
           }
-          subtitle="We build websites, run marketing, set up CRMs, and deploy voice agents."
+          subtitle="We build websites, automate marketing, set up CRMs, and deploy voice agents."
         />
       </section>
 
@@ -84,6 +85,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Clients */}
+      <section className="px-8 py-32 max-w-4xl mx-auto">
+        <h2 className="text-sm tracking-[0.3em] uppercase text-black/40 mb-4 text-center">
+          Already used by
+        </h2>
+        <p className="text-2xl md:text-3xl font-black tracking-tight text-center mb-10">
+          Best in the Game
+        </p>
+        <LogoCloud logos={clientLogos} />
+      </section>
+
       {/* Contact */}
       <section
         id="contact"
@@ -112,6 +124,14 @@ export default function Home() {
     </div>
   );
 }
+
+const clientLogos = [
+  { src: "/clients/compass.png", alt: "Compass Real Estate" },
+  { src: "/clients/glo-geeks.png", alt: "Glo Geeks" },
+  { src: "/clients/pacific-nw-lighting.png", alt: "Pacific NW Lighting" },
+  { src: "/clients/salon-agent.png", alt: "SalonAgent.ai", invert: true },
+  { src: "/clients/b-logo.png", alt: "B", invert: true },
+];
 
 function Logo({ small }: { small?: boolean }) {
   const size = small ? "text-lg" : "text-2xl";
