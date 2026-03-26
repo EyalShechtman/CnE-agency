@@ -24,7 +24,7 @@ function HandWrittenTitle({
     };
 
     return (
-        <div className="flex flex-col items-center w-full max-w-4xl mx-auto">
+        <div className="flex flex-col items-center w-full max-w-4xl mx-auto md:mb-24">
             {/* SVG + Title container */}
             <div className="relative w-full" style={{ aspectRatio: "2 / 1" }}>
                 <motion.svg
